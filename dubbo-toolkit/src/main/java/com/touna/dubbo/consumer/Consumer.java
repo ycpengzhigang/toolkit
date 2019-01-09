@@ -17,11 +17,9 @@ import com.alibaba.fastjson.JSONObject;
 
 public class Consumer {
     public static void main(String[] args) throws IOException {
-        // 普通编码配置方式
         ApplicationConfig application = new ApplicationConfig();
         application.setName("risk-management");
 
-        // 连接注册中心配置
         RegistryConfig registry = new RegistryConfig();
         registry.setAddress("zookeeper://172.30.18.111:2181?backup=172.30.18.112:2181,172.30.19.109:2181");
 
@@ -58,6 +56,7 @@ public class Consumer {
 
             System.out.println("休眠一次");
         }
+        scan.close();
     }
 
     public static List<String> readLineToList(String logFile) throws IOException {
